@@ -5,13 +5,17 @@ import 'package:buildcondition/buildcondition.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pueri/presentation/UI/favorite_screen/favorite_screen.dart';
+import 'package:pueri/presentation/UI/profile/edit/edit.dart';
+import 'package:pueri/presentation/resourses/constants/app_constants.dart';
 import 'package:pueri/presentation/resourses/styles/colors.dart';
 
 import '../../../app/cubit/cubit.dart';
 import '../../../app/cubit/state.dart';
-
+import '../../resourses/styles/styles.dart';
 
 class Profile_Screen extends StatefulWidget {
   @override
@@ -19,42 +23,160 @@ class Profile_Screen extends StatefulWidget {
 }
 
 class _Profile_ScreenState extends State<Profile_Screen> {
-
   Future<void> _refreshData(BuildContext context) async {
     AppCubit.get(context).getUserData(AppCubit.get(context).user_model?.id);
-
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
-
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppState>(
-      listener: (context, state) {
-
-      },
+      listener: (context, state) {},
       builder: (context, state) {
-
-        var cubit  =AppCubit.get(context);
+        var cubit = AppCubit.get(context);
 
         return Scaffold(
-          appBar:AppBar(),
+          body: SafeArea(
+            child: RefreshIndicator(
+                color: AppColors.primary,
+                onRefresh: () => _refreshData(context),
+                child: state is GetUserDataLodingState
+                    ? Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : BuildCondition(
+                        builder: (context) => Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  AppConstants.navigateTo(
+                                      context, Edit_Screen());
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.all(20),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(25),
+                                      border:
+                                          Border.all(color: AppColors.primary)),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          child: Image.network(
+                                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5sauWAwGnkEFOAI_6MfI2MNg8UzIlpbUkTg&usqp=CAU',
+                                            width: 80,
+                                            height: 80,
+                                            fit: BoxFit.fill,
+                                          )),
+                                      SizedBox(
+                                        width: 8,
+                                      ),
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '${cubit.user_model?.first_name} ${cubit.user_model?.last_name}',
+                                            style: Styles.semi_bold_16
+                                                .copyWith(color: Colors.black),
+                                          ),
+                                          Text(
+                                            '${cubit.user_model?.email}',
+                                            style: Styles.reguler_12
+                                                .copyWith(fontSize: 11)
+                                                .copyWith(color: Colors.black),
+                                          )
+                                        ],
+                                      ),
+                                      Spacer(),
+                                      Icon(Icons.arrow_forward_ios)
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              profile_item(
+                                  icon: Icons.headset_outlined,
+                                  color: Colors.blue,
+                                  text: 'Contact Us',
+                                  onTap: () {}),
+                              profile_item(
+                                  icon: Icons.payment_outlined,
+                                  color: Colors.black,
+                                  text: 'Payment Methoud',
+                                  onTap: () {}),
+                              profile_item(
+                                  icon: Icons.favorite_border_outlined,
+                                  color: Colors.red,
+                                  text: 'Favorite',
+                                  onTap: () {
+                                    AppConstants.navigateTo(context, Favorite_Screen());
+                                  }),
+                              profile_item(
+                                  icon: Icons.location_on_outlined,
+                                  color: Colors.green,
+                                  text: 'Location',
+                                  onTap: () {}),
+                              profile_item(
+                                  icon: Icons.logout_outlined,
+                                  color: Colors.red,
+                                  text: 'Log Out',
+                                  onTap: () {}),
 
-          body:RefreshIndicator(
-              color: AppColors.primary,
-              onRefresh: () => _refreshData(context),
-              child: state is GetUserDataLodingState ?Center(child: CircularProgressIndicator(),): BuildCondition(
-                builder: (context) => Container(color: Colors.green,),
-                fallback: (context) => Center(child: CircularProgressIndicator(),),
-                condition:true, //cubit.student_model !=null,
-              )),
+                            ],
+                          ),
+                        ),
+                        fallback: (context) => Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        condition: true, //cubit.student_model !=null,
+                      )),
+          ),
         );
       },
     );
   }
+
+  Widget profile_item({icon, text, onTap, color}) => InkWell(
+        onTap: onTap,
+        child: Container(
+          padding: EdgeInsets.all(9),
+          margin: EdgeInsets.symmetric(vertical: 5),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(color: AppColors.primary)),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                color: color,
+              ),
+              SizedBox(
+                width: 8,
+              ),
+              Text(
+                text,
+                style: Styles.semi_bold_16.copyWith(color: Colors.black),
+              ),
+              Spacer(),
+              Icon(Icons.arrow_forward_ios)
+            ],
+          ),
+        ),
+      );
 }

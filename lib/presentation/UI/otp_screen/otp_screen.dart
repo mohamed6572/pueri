@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pueri/presentation/UI/home/home.dart';
+import 'package:pueri/presentation/UI/register/register_screen.dart';
+import 'package:pueri/presentation/resourses/constants/app_constants.dart';
 import 'package:sms_otp_auto_verify/sms_otp_auto_verify.dart';
 
 import '../../resourses/styles/colors.dart';
@@ -73,7 +76,9 @@ class _Otp_ScreenState extends State<Otp_Screen> {
               }),
           SizedBox(height: 40,),
           InkWell(
-            onTap: (){},
+            onTap: (){
+              AppConstants.navigateTo(context, HomeScreen());
+            },
             child: Container(
               height: 40,
               margin: EdgeInsets.symmetric(horizontal: 25),

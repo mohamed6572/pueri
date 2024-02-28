@@ -19,10 +19,7 @@ class HomeLayout extends StatefulWidget {
 }
 
 class _HomeLayoutState extends State<HomeLayout> {
-  Future<void> _refreshData(BuildContext context) async {
-    AppCubit.get(context).getUserData(FirebaseAuth.instance.currentUser?.uid);
 
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +42,7 @@ class _HomeLayoutState extends State<HomeLayout> {
               },child:SvgPicture.asset('assets/icons/watch.svg',color: cubit.bottomNavIndex==2 ? Colors.black : Colors.white,),
               //params
             ),
+
             floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             bottomNavigationBar: BottomNavigationBar(
               backgroundColor: AppColors.primary,type: BottomNavigationBarType.fixed,
@@ -80,11 +78,7 @@ class _HomeLayoutState extends State<HomeLayout> {
             //   onTap: (index) => setState(() => _bottomNavIndex = index),
             //   //other params
             // ),
-            body:RefreshIndicator(
-                onRefresh: () {
-                 return _refreshData(context) ;
-                },
-                child: cubit.App_Screens[cubit.bottomNavIndex])
+            body:cubit.App_Screens[cubit.bottomNavIndex]
         );
       },
     );

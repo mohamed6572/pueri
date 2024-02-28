@@ -5,16 +5,16 @@ import 'package:pueri/app/cubit/state.dart';
 
 import '../../resourses/styles/colors.dart';
 import '../../resourses/styles/styles.dart';
-import 'home_components.dart';
+import '../home/home_components.dart';
 
-class Home_View_All extends StatefulWidget {
-  Home_View_All({super.key});
+class Favorite_Screen extends StatefulWidget {
+  Favorite_Screen({super.key});
 
   @override
-  State<Home_View_All> createState() => _Home_View_AllState();
+  State<Favorite_Screen> createState() => _Favorite_ScreenState();
 }
 
-class _Home_View_AllState extends State<Home_View_All> {
+class _Favorite_ScreenState extends State<Favorite_Screen> {
   var searchControler = TextEditingController();
 
   @override
@@ -45,11 +45,11 @@ class _Home_View_AllState extends State<Home_View_All> {
                   controller: searchControler,
                   maxLines: 1,
                   minLines: null,
-                    onChanged: (v){
-                      setState(() {
-                        searchControler.text = v;
-                      });
-                    },
+                  onChanged: (v){
+                    setState(() {
+                      searchControler.text = v;
+                    });
+                  },
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
                       return 'please enter the search query ';
@@ -79,20 +79,21 @@ class _Home_View_AllState extends State<Home_View_All> {
                     child: ListView.builder(
                       itemBuilder: (context, index)
                       {
-                        final hospital = cubit.hospitals[index];
+                        final hospital = cubit.favorite_list[index];
+
                         if (searchControler.text.isNotEmpty && !hospital.hospital_name!.contains(searchControler.text)) { // <-- Add this line
                           return SizedBox.shrink(); // Skip this item if it does not match the search query
                         }
                         return Home_widget(
-                        hospital_name:
-                        '${cubit.hospitals[index].hospital_name}',
-                        beds: cubit.hospitals[index].avilable!,
-                        id: cubit.hospitals[index].id!,
-                        location: '${cubit.hospitals[index].location}',
-                        rate: cubit.hospitals[index].rate!,
-                        supported: cubit.hospitals[index].supported!,
-                      );},
-                      itemCount: cubit.hospitals.length,
+                          hospital_name:
+                          '${cubit.favorite_list[index].hospital_name}',
+                          beds: cubit.favorite_list[index].avilable!,
+                          id: cubit.favorite_list[index].id!,
+                          location: '${cubit.favorite_list[index].location}',
+                          rate: cubit.favorite_list[index].rate!,
+                          supported: cubit.favorite_list[index].supported!,
+                        );},
+                      itemCount: cubit.favorite_list.length,
                     ))
               ],
             ),

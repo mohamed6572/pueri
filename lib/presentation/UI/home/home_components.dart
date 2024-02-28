@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pueri/app/cubit/cubit.dart';
 
 import '../../resourses/styles/colors.dart';
 import '../../resourses/styles/styles.dart';
 
 class Home_widget extends StatelessWidget {
-   Home_widget({required this.hospital_name ,required this.favorite,required this.location ,required this.rate ,required this.beds ,required this.supported ,});
-  int beds= 0;
-  double rate= 0.0;
+   Home_widget({required this.hospital_name ,required this.id, required this.location ,required this.rate ,required this.beds ,required this.supported ,});
+  String beds= '0';
+  dynamic rate= 0.0;
   String hospital_name= '';
   String location= '';
   bool supported= true;
-  bool favorite= true;
+  String? id;
 
 
   @override
@@ -34,7 +35,18 @@ class Home_widget extends StatelessWidget {
                 '${hospital_name}',
                 style: Styles.semi_bold_16.copyWith(color: AppColors.primary),
               ),
-              Icon(favorite ?Icons.favorite : Icons.favorite_border,color: favorite ?Color(0xffE81515): Colors.black,)
+              InkWell(
+                  onTap: (){
+                    if(!AppCubit.get(context).user_model!.favorites!.contains(id)){
+                      AppCubit.get(context).make_favorite(id);
+                    }else
+                  {
+                      AppCubit.get(context).remove_favorite(id);
+                    }
+
+
+                  },
+                  child: Icon(AppCubit.get(context).user_model!.favorites!.contains(id) ?Icons.favorite : Icons.favorite_border,color: AppCubit.get(context).user_model!.favorites!.contains(id) ?Color(0xffE81515): Colors.black,))
             ],
           ),
 
@@ -96,7 +108,7 @@ class Home_widget extends StatelessWidget {
                 width: 100,
                 height: 20,
                 child: RatingBar.builder(
-                  initialRating: rate,
+                  initialRating: rate.toDouble(),
                   itemSize: 16,
                   minRating: 1,
                   unratedColor: Colors.grey.shade400

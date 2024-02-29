@@ -16,6 +16,7 @@ import 'package:pueri/presentation/resourses/styles/colors.dart';
 import '../../../app/cubit/cubit.dart';
 import '../../../app/cubit/state.dart';
 import '../../resourses/styles/styles.dart';
+import '../location/location.dart';
 
 class Profile_Screen extends StatefulWidget {
   @override
@@ -130,7 +131,9 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                   icon: Icons.location_on_outlined,
                                   color: Colors.green,
                                   text: 'Location',
-                                  onTap: () {}),
+                                  onTap: () {
+                                    AppConstants.navigateTo(context, Location_Screen());
+                                  }),
                               profile_item(
                                   icon: Icons.logout_outlined,
                                   color: Colors.red,

@@ -276,28 +276,20 @@ class _Register_screenState extends State<Register_screen> {
                           SizedBox(
                             height: 20,
                           ),
-                          InkWell(
-                            onTap: () {
+                          AppConstants.defButton(
+                            color: AppColors.primary,
+                            onTap:  () {
                               if(formKey.currentState!.validate()){
                                 AppCubit.get(context).signUpAndStoreUserData(email: email_Controller.text,
                                     first_name: '${firstName_Controller.text}',password: password_Controller.text, context: context, last_name: '${lastName_Controller.text}');
 
                               }
                             },
-                            child: Container(
-                              width: double.infinity,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                  color: AppColors.primary,
-                                  borderRadius: BorderRadius.circular(12)),
-                              child: Center(
-                                child:state is SignUpLodingState ? CircularProgressIndicator(color: Colors.white,): Text(
-                                  'Sign Up',
-                                  style: Styles.semi_bold_15,
-                                ),
-                              ),
-                            ),
+                            text:  'Sign Up',
+                            condetion: state is SignUpLodingState,
+
                           ),
+
                           Row(
                             children: [
                               Expanded(

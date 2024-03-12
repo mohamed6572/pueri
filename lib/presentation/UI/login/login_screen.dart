@@ -109,7 +109,7 @@ class _Login_screenState extends State<Login_screen> {
                                     BorderSide(color: AppColors.primary)),
                             hintText: 'Enter Your Email',
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(25),
+                              borderRadius: BorderRadius.circular(12),
                               borderSide: BorderSide(
 
                                   color:   AppColors.primary),),
@@ -156,7 +156,7 @@ class _Login_screenState extends State<Login_screen> {
                                     BorderSide(color: AppColors.primary)),
                             hintText: 'Enter Your Password',
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(25),
+                              borderRadius: BorderRadius.circular(12),
                               borderSide: BorderSide(
 
                                   color:   AppColors.primary),),

@@ -40,6 +40,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   flutter_svg: ^2.0.9
   image_picker: ^1.0.4
+  firebase_messaging: ^14.7.19
   expandable_text: 2.3.0
   intl: ^0.18.1
   bloc: ^8.1.2

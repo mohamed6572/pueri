@@ -9,6 +9,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pueri/presentation/UI/favorite_screen/favorite_screen.dart';
+import 'package:pueri/presentation/UI/login/login_screen.dart';
 import 'package:pueri/presentation/UI/profile/edit/edit.dart';
 import 'package:pueri/presentation/resourses/constants/app_constants.dart';
 import 'package:pueri/presentation/resourses/styles/colors.dart';
@@ -17,6 +18,7 @@ import '../../../app/cubit/cubit.dart';
 import '../../../app/cubit/state.dart';
 import '../../resourses/styles/styles.dart';
 import '../location/location.dart';
+import '../payment/payments_details.dart';
 
 class Profile_Screen extends StatefulWidget {
   @override
@@ -119,7 +121,9 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                   icon: Icons.payment_outlined,
                                   color: Colors.black,
                                   text: 'Payment Methoud',
-                                  onTap: () {}),
+                                  onTap: () {
+                                    AppConstants.navigateTo(context, PaymentsDetailsView());
+                                  }),
                               profile_item(
                                   icon: Icons.favorite_border_outlined,
                                   color: Colors.red,
@@ -138,7 +142,9 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                   icon: Icons.logout_outlined,
                                   color: Colors.red,
                                   text: 'Log Out',
-                                  onTap: () {}),
+                                  onTap: () async{ 
+                                   await FirebaseAuth.instance.signOut().then((value) => AppConstants.navigateToAndFinish(context, Login_screen()));
+                                  }),
 
                             ],
                           ),

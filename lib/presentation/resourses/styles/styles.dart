@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:pueri/presentation/resourses/styles/colors.dart';
 
 class Styles {
+  static  TextStyle style22 =const  TextStyle(
+    color: Colors.black,
+    fontSize: 22,
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w500,
+    height: 0,
+  );
   static TextStyle bold_15 =
       TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white);
   static TextStyle bold_16 =
@@ -18,4 +25,12 @@ class Styles {
       TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black);
   static TextStyle reguler_12 =
       TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.grey);
+  static  TextStyle style24 =const  TextStyle(
+    color: Colors.black,
+    fontSize: 25,
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w600,
+    height: 0,
+  );
+
 }

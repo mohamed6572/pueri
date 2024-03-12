@@ -117,6 +117,11 @@ class _Register_screenState extends State<Register_screen> {
                                               borderSide: BorderSide(
                                                   color: AppColors.primary)),
                                           hintText: 'Frist Name',
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(25),
+                                            borderSide: BorderSide(
+
+                                                color:   AppColors.primary),),
                                           border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(12))),
@@ -160,6 +165,7 @@ class _Register_screenState extends State<Register_screen> {
                                           errorBorder: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(12),
+
                                               borderSide: BorderSide(
                                                   color: Colors.red)),
                                           disabledBorder: OutlineInputBorder(
@@ -168,6 +174,11 @@ class _Register_screenState extends State<Register_screen> {
                                               borderSide: BorderSide(
                                                   color: AppColors.primary)),
                                           hintText: 'Last Name',
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(25),
+                                            borderSide: BorderSide(
+
+                                                color:   AppColors.primary),),
                                           border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(12))),
@@ -213,6 +224,11 @@ class _Register_screenState extends State<Register_screen> {
                                     borderRadius: BorderRadius.circular(12),
                                     borderSide:
                                         BorderSide(color: Colors.red)),
+                                 focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25),
+                                    borderSide: BorderSide(
+
+                                        color:   AppColors.primary),),
                                 disabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                     borderSide:
@@ -256,6 +272,11 @@ class _Register_screenState extends State<Register_screen> {
                                     borderRadius: BorderRadius.circular(12),
                                     borderSide:
                                         BorderSide(color: AppColors.primary)),
+                                 focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25),
+                                    borderSide: BorderSide(
+
+                                        color:   AppColors.primary),),
                                 disabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                     borderSide:

@@ -69,6 +69,11 @@ class _Home_View_AllState extends State<Home_View_All> {
                           borderRadius: BorderRadius.circular(25),
                           borderSide: BorderSide(color: AppColors.primary)),
                       hintText: 'Search',
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide(
+
+                            color:   AppColors.primary),),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25))),
                 ),

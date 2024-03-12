@@ -106,6 +106,11 @@ class _Doctor_ScreenState extends State<Doctor_Screen> {
                                       borderSide:
                                       BorderSide(color: AppColors.primary)),
                                   hintText: 'Search',
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25),
+                                    borderSide: BorderSide(
+
+                                        color:   AppColors.primary),),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(25))),
                             ),

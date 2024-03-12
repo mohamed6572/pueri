@@ -18,6 +18,7 @@ import 'package:pueri/presentation/resourses/styles/styles.dart';
 import '../../../app/cubit/cubit.dart';
 import '../../../app/cubit/state.dart';
 import '../../resourses/models/hospital_model/hospital_model.dart';
+import '../notification/notification_screen.dart';
 import 'home_components.dart';
 import 'home_view_all.dart';
 
@@ -116,14 +117,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                   borderSide:
                                       BorderSide(color: AppColors.primary)),
                               hintText: 'Search',
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:   AppColors.primary),
+                                  borderRadius:
+                                  BorderRadius.circular(25)),
                               border: OutlineInputBorder(
+
                                   borderRadius: BorderRadius.circular(25))),
                         ),
                       ),
                       SizedBox(
                         width: 20,
                       ),
-                      Image.asset('assets/images/notification.png')
+                      InkWell(
+                          onTap: (){
+                            AppConstants.navigateTo(context, Notification_Screen());
+                          },
+                          child: Image.asset('assets/images/notification.png'))
                     ],
                   ),
                   SizedBox(

@@ -19,6 +19,7 @@ import 'package:pueri/presentation/resourses/styles/styles.dart';
 import '../../../app/cubit/cubit.dart';
 import '../../../app/cubit/state.dart';
 import '../../resourses/models/hospital_model/hospital_model.dart';
+import 'message_details_screen.dart';
 class Message_Screen extends StatefulWidget {
   @override
   State<Message_Screen> createState() => _Message_ScreenState();
@@ -85,7 +86,10 @@ class _Message_ScreenState extends State<Message_Screen> {
                               name: 'DR.Ammar',
                               image_link:
                               'https://media.istockphoto.com/id/177373093/photo/indian-male-doctor.jpg?s=612x612&w=0&k=20&c=5FkfKdCYERkAg65cQtdqeO_D0JMv6vrEdPw3mX1Lkfg=',
-                              onTap: () {},
+                              onTap: () {
+                              AppConstants.navigateTo(context, Message_Details_Screen());
+
+                              },
                             );
                           },
                         ),

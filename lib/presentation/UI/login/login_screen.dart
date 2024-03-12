@@ -108,6 +108,11 @@ class _Login_screenState extends State<Login_screen> {
                                 borderSide:
                                     BorderSide(color: AppColors.primary)),
                             hintText: 'Enter Your Email',
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(25),
+                              borderSide: BorderSide(
+
+                                  color:   AppColors.primary),),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12))),
                       ),
@@ -150,7 +155,11 @@ class _Login_screenState extends State<Login_screen> {
                                 borderSide:
                                     BorderSide(color: AppColors.primary)),
                             hintText: 'Enter Your Password',
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(25),
+                              borderSide: BorderSide(
 
+                                  color:   AppColors.primary),),
                             suffixIcon: InkWell(
                                 onTap: () {
                                   setState(() {

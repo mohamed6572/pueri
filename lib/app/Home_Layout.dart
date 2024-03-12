@@ -32,9 +32,10 @@ class _HomeLayoutState extends State<HomeLayout> {
         var cubit  =AppCubit.get(context);
 
         return Scaffold(
-
+            resizeToAvoidBottomInset: false,
             floatingActionButton: FloatingActionButton(
               backgroundColor: AppColors.primary,
+              isExtended: true,
               shape: CircleBorder(),
               elevation: 0.0,
               onPressed: () {

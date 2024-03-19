@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pueri/app/cubit/cubit.dart';
 import 'package:pueri/app/cubit/state.dart';
 
+import '../../resourses/constants/app_constants.dart';
 import '../../resourses/styles/colors.dart';
 import '../../resourses/styles/styles.dart';
 import 'home_components.dart';
+import 'home_widget_screen.dart';
 
 class Home_View_All extends StatefulWidget {
   Home_View_All({super.key});
@@ -88,7 +90,11 @@ class _Home_View_AllState extends State<Home_View_All> {
                         if (searchControler.text.isNotEmpty && !hospital.hospital_name!.contains(searchControler.text)) { // <-- Add this line
                           return SizedBox.shrink(); // Skip this item if it does not match the search query
                         }
-                        return Home_widget(
+                        return InkWell(
+                            onTap: (){
+                          AppConstants.navigateTo(context, Home_Widget_Screen(model:cubit.hospitals[index]));
+                        },
+                        child:  Home_widget(
                         hospital_name:
                         '${cubit.hospitals[index].hospital_name}',
                         beds: cubit.hospitals[index].avilable!,
@@ -96,7 +102,7 @@ class _Home_View_AllState extends State<Home_View_All> {
                         location: '${cubit.hospitals[index].location}',
                         rate: cubit.hospitals[index].rate!,
                         supported: cubit.hospitals[index].supported!,
-                      );},
+                        ));},
                       itemCount: cubit.hospitals.length,
                     ))
               ],

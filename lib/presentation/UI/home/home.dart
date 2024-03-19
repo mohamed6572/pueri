@@ -21,6 +21,7 @@ import '../../resourses/models/hospital_model/hospital_model.dart';
 import '../notification/notification_screen.dart';
 import 'home_components.dart';
 import 'home_view_all.dart';
+import 'home_widget_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -208,14 +209,19 @@ class _HomeScreenState extends State<HomeScreen> {
                               if (searchControler.text.isNotEmpty && !hospital.hospital_name!.contains(searchControler.text)) { // <-- Add this line
                                 return SizedBox.shrink(); // Skip this item if it does not match the search query
                               }
-                              return Home_widget(
-                                hospital_name:
-                                    '${cubit.toprated[index].hospital_name}',
-                                beds: cubit.toprated[index].avilable!,
-                                id: cubit.toprated[index].id!,
-                                location: '${cubit.toprated[index].location}',
-                                rate: cubit.toprated[index].rate!,
-                                supported: cubit.toprated[index].supported!,
+                              return InkWell(
+                                onTap: (){
+                                  AppConstants.navigateTo(context, Home_Widget_Screen(model:cubit.toprated[index]));
+                                },
+                                child: Home_widget(
+                                  hospital_name:
+                                      '${cubit.toprated[index].hospital_name}',
+                                  beds: cubit.toprated[index].avilable!,
+                                  id: cubit.toprated[index].id!,
+                                  location: '${cubit.toprated[index].location}',
+                                  rate: cubit.toprated[index].rate!,
+                                  supported: cubit.toprated[index].supported!,
+                                ),
                               );
                             },
                           ),

@@ -100,7 +100,7 @@ class Home_widget extends StatelessWidget {
                   ),
                   Text(
                     '${beds} Beds',
-                    style: Styles.semi_bold_16.copyWith(color: Colors.green,fontSize: 11,overflow: TextOverflow.ellipsis),maxLines: 1,
+                    style: Styles.semi_bold_16.copyWith(color:beds =='0' ? Colors.red: Colors.green,fontSize: 11,overflow: TextOverflow.ellipsis),maxLines: 1,
                   ),
                 ],
               ),

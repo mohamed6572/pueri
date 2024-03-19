@@ -19,6 +19,7 @@ import 'package:pueri/presentation/resourses/styles/styles.dart';
 import '../../../app/cubit/cubit.dart';
 import '../../../app/cubit/state.dart';
 import '../../resourses/models/hospital_model/hospital_model.dart';
+import '../message/message_details_screen.dart';
 import 'doctor_components.dart';
 import 'doctor_view_all.dart';
 
@@ -72,7 +73,7 @@ int h_index =0;
                           child: Image.asset('assets/images/back_arrow.png')),
                       InkWell(
                           onTap: () {
-                            Navigator.pop(context);
+                            AppConstants.navigateTo(context, Message_Details_Screen());
                           },
                           child: Icon(
                             Icons.email_rounded,
@@ -147,7 +148,7 @@ int h_index =0;
                           onTap: () {
               
                           },
-                          text: 'Books',
+                          text: 'Book',
                           condetion: false,
                         ),
                       ),
@@ -158,6 +159,7 @@ int h_index =0;
                         child: AppConstants.defButton(
                           color: Colors.white,
                           onTap: () {
+                            AppConstants.navigateTo(context, Message_Details_Screen());
                           },
                           textColor: AppColors.primary,
                           text: 'Massage',

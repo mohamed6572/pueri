@@ -35,6 +35,7 @@ class _Register_screenState extends State<Register_screen> {
 
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
+              duration: Duration(milliseconds: 400),
               content: Text(
                 'Register_screen Succses ...',
                 style: TextStyle(

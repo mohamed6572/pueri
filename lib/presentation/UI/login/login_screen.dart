@@ -35,6 +35,7 @@ class _Login_screenState extends State<Login_screen> {
 
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
+              duration: Duration(milliseconds: 400),
               content: Text(
                 'Login Succses ...',
                 style: TextStyle(

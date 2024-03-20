@@ -17,6 +17,7 @@ import 'package:pueri/presentation/resourses/styles/colors.dart';
 import '../../../app/cubit/cubit.dart';
 import '../../../app/cubit/state.dart';
 import '../../resourses/styles/styles.dart';
+import '../contact/contact_us.dart';
 import '../location/location.dart';
 import '../payment/payments_details.dart';
 
@@ -116,7 +117,9 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                   icon: Icons.headset_outlined,
                                   color: Colors.blue,
                                   text: 'Contact Us',
-                                  onTap: () {}),
+                                  onTap: () {
+                                    AppConstants.navigateTo(context, ContactUsScreen());
+                                  }),
                               profile_item(
                                   icon: Icons.payment_outlined,
                                   color: Colors.black,

@@ -31,12 +31,15 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Future<void> _refreshData(BuildContext context) async {
     AppCubit.get(context).getUserData(FirebaseAuth.instance.currentUser?.uid);
+    AppCubit.get(context).Get_Hospital();
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    AppCubit.get(context).getUserData(FirebaseAuth.instance.currentUser?.uid);
+    AppCubit.get(context).Get_Hospital();
   }
 
   var searchControler = TextEditingController();

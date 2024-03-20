@@ -4,6 +4,7 @@ import 'package:pueri/presentation/UI/register/register_screen.dart';
 import 'package:pueri/presentation/resourses/constants/app_constants.dart';
 import 'package:sms_otp_auto_verify/sms_otp_auto_verify.dart';
 
+import '../../../app/Home_Layout.dart';
 import '../../resourses/styles/colors.dart';
 import '../../resourses/styles/styles.dart';
 
@@ -77,7 +78,7 @@ class _Otp_ScreenState extends State<Otp_Screen> {
           SizedBox(height: 40,),
           InkWell(
             onTap: (){
-              AppConstants.navigateTo(context, HomeScreen());
+              AppConstants.navigateTo(context, HomeLayout());
             },
             child: Container(
               height: 40,

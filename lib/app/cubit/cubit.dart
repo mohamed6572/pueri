@@ -53,6 +53,7 @@ class AppCubit extends Cubit<AppState> {
         'first_name': first_name,
         'phone': '',
         'date_birth': '',
+        'favorites': [],
         'email': email,
         'password': password,
         'id': uid,
